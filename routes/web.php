@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::group(['middleware' => 'auth:sanctum'], function(){
-   Route::get('/get', 'GetController@index'); 
-});
+// Route::group(['middleware' => 'auth:sanctum'], function(){
+//    Route::get('/get', 'GetController@index'); 
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('{page}', 'MainController@index')->where('page', '.*');
